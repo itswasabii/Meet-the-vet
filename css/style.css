@@ -1,0 +1,315 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-image: url("../img/Meet the vet.jpg");
+    background-size: cover;
+    background-position: center;
+    font-family: sans-serif;
+}
+.signup-box{
+    width: 320px;
+    height: 820px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    top: 54%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 70px 40px;
+}
+.login-box{
+    width: 320px;
+    height: 420px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+}
+.avatar{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 50px);
+}
+h1{
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 22px;
+}
+.login-box p{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+.login-box input{
+    width: 100%;
+    margin-bottom: 20px;
+}
+.login-box input[type="text"], input:not([type="submit"])
+{
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 16px;
+}
+.signup-box  input[type="submit"],  .login-box input[type="submit"]
+{
+    border: none;
+    outline: none;
+    height: 40px;
+	background: #1c8adb;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 20px;
+	width:100%;
+}
+.signup-box  input[type="submit"]:hover,.login-box input[type="submit"]:hover
+{
+    cursor: pointer;
+    background: #39dc79;
+    color: #000;
+}
+.signup-box{
+    width: 320px;
+    height: 80%;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    top: 54%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 70px 40px;
+}
+.vetsignup-box  input[type="submit"],  .login-box input[type="submit"]
+{
+    border: none;
+    outline: none;
+    height: 40px;
+	background: #1c8adb;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 20px;
+	width:100%;
+}
+.vetsignup-box  input[type="submit"]:hover,.login-box input[type="submit"]:hover
+{
+    cursor: pointer;
+    background: #39dc79;
+    color: #000;
+}
+
+.vetsignup-box{
+    width: 320px;
+    height: 90%;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    top: 54%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 70px 40px;
+}
+
+.login-box a{
+    text-decoration: none;
+    font-size: 14px;
+    color: #fff;
+}
+.login-box a:hover
+{
+    color: #39dc79;
+}
+
+.topnavlogout {
+  background-color: #000000;
+  overflow: hidden;
+}
+
+.topnavlogout a {
+  float: right;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnavlogout a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnavlogout a.active {
+  background-color: #0000FF;
+  color: whites;
+}
+.topnavlogout input[type=text] {
+  float: right;
+  padding: 6px;
+  border: none;
+  margin-top: 8px;
+  margin-right: 16px;
+  font-size: 17px;
+  background-color:white;
+}
+
+.topnav {
+  background-color: #000000;
+  overflow: hidden;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #0000FF;
+  color: whites;
+}
+*{
+  margin: 0;
+  padding: 0;
+  font-family: "montserrat",sans-serif;
+}
+.landing-page{
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  overflow: hidden;
+}
+.landing-page::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: .3;
+  animation: anim 25s linear infinite;
+}
+@keyframes anim {
+  50%{
+    transform: scale(2);
+  }
+  100%{
+    transform: scale(1);
+  }
+}
+.page-content{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  z-index: 1;
+  width: 100%;
+  max-width: 800px;
+  text-align: center;
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+.page-content h1{
+  color: #00BFFF;
+  text-transform: uppercase;
+  font-size: 50px;
+  font-weight: 900;
+  margin-bottom: 20px;
+}
+.page-content p{
+  color: 	#FFFFFF;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.page-content a{
+  display: inline-block;
+  text-decoration: none;
+  color: #00BFFF;
+  border: 2px solid #00BFFF;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  transition: 0.4s linear;
+}
+.page-content a:hover{
+  color:white;
+  background: #00BFFF;
+}
+.text{
+  padding: 10px;
+  text-align: justify;
+}
+.text div{
+  margin-bottom: 6px;
+}
+.contact-section h1{
+  text-align: center;
+  color: #1E90FF;
+  font-size: 40px;
+}
+.border{
+  width: 100px;
+  height: 10px;
+  background: #34495e;
+  margin: 40px auto;
+}
+
+.contact-form{
+  max-width: 600px;
+  margin: auto;
+  padding: 0 10px;
+  overflow: hidden;
+}
+
+.contact-form-text{
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 16px 0;
+  border: 0;
+  background: #111;
+  padding: 20px 40px;
+  outline: none;
+  color: #ddd;
+  transition: 0.5s;
+}
+.contact-form-text:focus{
+  box-shadow: #FFFFFF;
+}
+textarea.contact-form-text{
+  resize: none;
+  height: 120px;
+}
+.contact-form-btn{
+  float: right;
+  border: 0;
+  background: #1E90FF;
+  color: #fff;
+  padding: 12px 50px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.contact-form-btn:hover{
+  background: #2980b9;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE.html>
+<html>
+<head>
+    <title>Vet Sign Up </title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">    
+	</head>
+    <body>
+	<div class="topnav">
+  <a class="active" href="../Home.html">Home</a>
+  <a href="../Login.html">Login </a>
+  <a href="">About Us</a>
+  <a href="">Contact Us</a>
+  </div>
+    <div class="vetsignup-box">
+    <img src="../img/avatar.png" class="avatar">
+        <h1>Enter your details here</h1>
+            <form method= "post" action="../processes/signup_processes.php" autocomplete="OFF">
+   			<p><strong>First Name</strong></p>
+			<br />
+            <input type="text" name="FirstName" placeholder="Enter First Name" required>
+			<br />
+			<p><strong>Last Name</strong></p>
+			<br />
+            <input type="text" name="LastName" placeholder="Enter Last Name" required>
+			<br />
+			<p><strong>Username</strong></p>
+			<br />
+            <input type="text" name="Username" placeholder="Enter Username" required>
+			<br />
+            <p><strong>Password</strong></p>
+			<br />
+            <input type="password" name="Password" placeholder="Enter Password" required>
+			<br />
+			 <p><strong>Confirm Password</strong></p>
+			 <br />
+            <input type="password" name="Confirmpassword" placeholder="Re-type Password" required>
+			<br />
+			 <p><strong>Email Address</strong></p>
+			 <br />
+            <input type="email" name="email" placeholder="Enter your email address" required>
+			<br />
+			 <p><strong>Date Of Birth</strong></p>
+			 <br />
+            <input type="date" name="dateofbirth" placeholder="Enter your date of birth" required>
+			<br />
+			<br />
+            <input type="submit" name="SignUp" value="Sign Up"> 
+			<br />
+			<br />
+			<p><strong>Already a member?<a href="../Login.html">Login</a></strong></p>
+			</form>     
+        </div>
+    </body>
+</html>

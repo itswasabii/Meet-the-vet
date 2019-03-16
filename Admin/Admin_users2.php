@@ -1,0 +1,251 @@
+<?php
+	require_once "../config/dbConnect.php";
+	require_once "../config/tools.php";
+	include('../processes/User_processes.php'); 
+	if(isset($_GET['edit'])){
+			$UserID = $_GET['edit'];
+			$edit_state = true;
+			$rec = mysqli_query($link, "SELECT*FROM users WHERE UserID=$UserID");
+			$record = mysqli_fetch_array($rec);
+			$UserID = $record['UserID'];
+			$Firstname = $record['Firstname'];
+			$Lastname = $record['Lastname'];
+			$Username = $record['Username'];
+			$email = $record['email'];
+			$Password = $record['Password'];
+			$DateOfBirth = $record['DateOfBirth'];
+			$Usertype = $record['Usertype'];
+		}
+?>
+<!DOCTYPE.html>
+<html>
+<head>
+<Title>USERS</Title>
+<meta name = "viewport" content = "width=device-width, initial-scale=1" />
+ <meta charset = "utf-8" />
+ <meta http-equiv="X-UA-Compatible" content ="ie = edge">
+ <link rel="stylesheet" type="text/css" href="../css/manage.css">   
+ <style>
+ 
+ </style>
+</head>
+<body>
+<div class="topnavigationbar">
+  <a class="active" href="#profile">PROFILE</a>
+  <a  href="">USERS</a>
+  <a href="">FEEDBACK</a>
+  <a  href="#profile">LOGIN ACTIVITY</a>
+  <div class="logout">
+			   <?php
+				if(isset($_SESSION["control"])){
+				?>
+				<a href = "../processes/login_and_logout.php?Signout">Signout</a>
+				<a>HELLO  <?php print $_SESSION["control"]["Username"];
+				?></a>
+				<?php
+				}
+				?>
+	</div>
+	</div>
+	<?php if (isset($_SESSION["msg"])): ?>
+		<div class = "msg">
+			<?php
+					echo $_SESSION["msg"];
+					unset ($_SESSION["msg"]);
+			?>
+			</div>
+	<?php endif ?>	
+	<table>
+	 <thead>
+	 <th>Firstname</th>
+	 <th>Lastname</th>
+	 <th>Username</th>
+	 <th>Email Address</th>
+	 <th>DateOfBirth</th>
+	 <th>Usertype</th>
+	 <th colspan="2">Action</th>
+	 </thead>
+	 <tbody>
+		<?php while ($row = mysqli_fetch_array($results)){?>
+			 <tr>
+			<td><?php echo $row['Firstname']; ?></td>
+			<td><?php echo $row['Lastname']; ?></td>
+			<td><?php echo $row['Username']; ?></td>
+			<td><?php echo $row['email']; ?></td>
+			<td><?php echo $row['DateOfBirth']; ?></td>
+			<td><?php echo $row['Usertype']; ?></td>
+			<td>
+					<a class="edit_btn" href="Admin_users2.php?edit=<?php echo $row['UserID']; ?>">Edit</a>
+			</td>
+			<td>
+					<a class="del_btn" href="../processes/User_processes.php?del=<?php echo $row['UserID']; ?>" onclick="return confirm('Are you sure?');">Delete</a>
+			</td>
+	   </tr>
+		<?php } ?>
+	 </tbody>
+	</table>
+	<button onclick="document.getElementById('modal-wrapper').style.display='block'" style="width:150px; margin-top:20px; margin-left:160px;">Add User</button>
+	<div id="modal-wrapper" class="modal">
+	<form class="modal-content animate" action="/action_page.php"> 
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('modal-wrapper').style.display='none'" class="close" title="Close">&times;</span>
+      <img src="img/avatar.png" alt="Avatar" class="avatar">
+    </div>
+    <div class="container">
+		<p>First Name</p>
+		<input type="text" name="Firstname" placeholder="Enter their Firstname"> 
+		<p>Last Name</p>
+		<input type="text" name="Lastname" placeholder="Enter their Lastname">
+		<p>Username</p>
+		<input type="text" name="Username" placeholder="Enter their Username">
+		<p>Email Address</p>
+		<input type="email" name="email" placeholder="Enter their email">
+		<p>Password</p>
+		<input type="password" name="Password" placeholder="Enter their Password">
+		<p>DateOfBirth</p>
+		<input type="date" name="DateOfBirth">
+		<p>Usertype</p>
+		<select name="Usertype">
+		  <option value="Admin" >Admin</option>
+		  <option value="Farmer" >Farmer</option>
+		  <option value="Vet" >Vet</option>
+		</select> 
+      <button type="submit">ADD</button>
+    </div>
+	</form>
+	</div>
+		<script>
+				// If user clicks anywhere outside of the modal, Modal will close
+				var modal = document.getElementById('modal-wrapper');
+				window.onclick = function(event) {
+					if (event.target == modal) {
+						modal.style.display = "none";
+					}
+				}
+		</script>
+		<script>
+				var x, i, j, selElmnt, a, b, c;
+				/*look for any elements with the class "custom-select":*/
+				x = document.getElementsByClassName("custom-select");
+				for (i = 0; i < x.length; i++) {
+				  selElmnt = x[i].getElementsByTagName("select")[0];
+				  /*for each element, create a new DIV that will act as the selected item:*/
+				  a = document.createElement("DIV");
+				  a.setAttribute("class", "select-selected");
+				  a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+				  x[i].appendChild(a);
+				  /*for each element, create a new DIV that will contain the option list:*/
+				  b = document.createElement("DIV");
+				  b.setAttribute("class", "select-items select-hide");
+				  for (j = 1; j < selElmnt.length; j++) {
+					/*for each option in the original select element,
+					create a new DIV that will act as an option item:*/
+					c = document.createElement("DIV");
+					c.innerHTML = selElmnt.options[j].innerHTML;
+					c.addEventListener("click", function(e) {
+						/*when an item is clicked, update the original select box,
+						and the selected item:*/
+						var y, i, k, s, h;
+						s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+						h = this.parentNode.previousSibling;
+						for (i = 0; i < s.length; i++) {
+						  if (s.options[i].innerHTML == this.innerHTML) {
+							s.selectedIndex = i;
+							h.innerHTML = this.innerHTML;
+							y = this.parentNode.getElementsByClassName("same-as-selected");
+							for (k = 0; k < y.length; k++) {
+							  y[k].removeAttribute("class");
+							}
+							this.setAttribute("class", "same-as-selected");
+							break;
+						  }
+						}
+						h.click();
+					});
+					b.appendChild(c);
+				  }
+				  x[i].appendChild(b);
+				  a.addEventListener("click", function(e) {
+					  /*when the select box is clicked, close any other select boxes,
+					  and open/close the current select box:*/
+					  e.stopPropagation();
+					  closeAllSelect(this);
+					  this.nextSibling.classList.toggle("select-hide");
+					  this.classList.toggle("select-arrow-active");
+					});
+				}
+				function closeAllSelect(elmnt) {
+				  /*a function that will close all select boxes in the document,
+				  except the current select box:*/
+				  var x, y, i, arrNo = [];
+				  x = document.getElementsByClassName("select-items");
+				  y = document.getElementsByClassName("select-selected");
+				  for (i = 0; i < y.length; i++) {
+					if (elmnt == y[i]) {
+					  arrNo.push(i)
+					} else {
+					  y[i].classList.remove("select-arrow-active");
+					}
+				  }
+				  for (i = 0; i < x.length; i++) {
+					if (arrNo.indexOf(i)) {
+					  x[i].classList.add("select-hide");
+					}
+				  }
+				}
+				/*if the user clicks anywhere outside the select box,
+				then close all select boxes:*/
+				document.addEventListener("click", closeAllSelect);
+</script>
+	<div class = "input-group">
+		<?php if($edit_state == false): ?>
+		<form  method="POST" action="../processes/User_processes.php" autocomplete="off">
+	    <center><h1>ADD USER</h1></center>
+		<label>First Name</label>
+		<input type="text" name="Firstname" placeholder="Enter their Firstname"> 
+		<label>Last Name</label>
+		<input type="text" name="Lastname" placeholder="Enter their Lastname">
+		<label>Username</label>
+		<input type="text" name="Username" placeholder="Enter their Username">
+		<label>Email Address</label>
+		<input type="email" name="email" placeholder="Enter their email">
+		<label>Password</label>
+		<input type="password" name="Password" placeholder="Enter their Password">
+		<label>DateOfBirth</label>
+		<input type="date" name="DateOfBirth">
+		<label>Usertype</label>
+		<input type="text" name="Usertype" placeholder="Enter their Usertype">
+		<br />
+		<br />
+		<br />
+		<center><button type = "submit" name="save" class="btn">ADD</button></center>
+		</form>
+		<?php else: ?>
+		<form  method="POST" action="../processes/User_processes.php" autocomplete="off">
+		<center><h1>UPDATE USER</h1></center>
+		<input type="hidden" name="UserID" value="<?php echo $UserID;?>">
+		<label>First Name</label>
+		<input type="text" name="Firstname" value="<?php echo $Firstname; ?>">
+		<label>Last Name</label>
+		<input type="text" name="Lastname" value="<?php echo $Lastname; ?>">
+		<label>Username</label>
+		<input type="text" name="Username" value="<?php echo $Username; ?>">
+		<label>Email Address</label>
+		<input type="email" name="email" value="<?php echo $email; ?>">
+		<label>Usertype</label>
+		<select name="Usertype">
+		  <option value="Admin" >Admin</option>
+		  <option value="Farmer" >Farmer</option>
+		  <option value="Vet" >Vet</option>
+		</select>
+		<br />
+		<br />
+		<br />
+				<center><button type = "submit" name="edit" class="btn">UPDATE</button></center>
+		<?php endif ?>
+	</form>
+	</div>
+	<center><a class="del_btn" href="Admin_users.php">Refresh</a></center>
+	
+</body>
+<html/>
